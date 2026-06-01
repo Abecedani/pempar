@@ -7,9 +7,7 @@ comm = MPI.COMM_WORLD
 rank = comm.Get_rank()
 size = comm.Get_size()
 
-with open('config.txt', 'r') as f:
-    dataset_size = f.read().strip()
-
+dataset_size = "1143"
 dataset_path = f'../data/dataset_{dataset_size}.csv'
 
 def clean_text(text):

@@ -2,7 +2,7 @@ UNTUK MENJALANKAN PROGRAM SEKALIGUS, DAPAT MENGGUNAKAN SCRIPT DI BAWAH INI <br>
 for ($i = 1; $i -le 5; $i++) {
     Write-Host "=== RUN KE-$i ==="
     foreach ($dataset in @("1143", "50000", "100000", "500000", "1000000")) {
-        Set-Content -Path "config.txt" -Value $dataset
+        (Get-Content script_mpi.py) -replace 'dataset_size = ".*"', "dataset_size = `"$dataset`"" | Set-Content script_mpi.py
         Write-Host "--- Dataset: $dataset ---"
         mpiexec -n 1 python script_mpi.py
         mpiexec -n 2 python script_mpi.py
